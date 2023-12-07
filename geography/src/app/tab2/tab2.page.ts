@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  datosUsuario = {
+    nombre: '',
+    apellido: '',
+    latitud: 0,
+    longitud: 0
+  };
 
-  constructor() {}
+  constructor(private router: Router) {}
 
+  onSiguienteClick() {
+    this.router.navigate(['/mapa'], { state: { datosUsuario: this.datosUsuario } });
+  }
 }
